@@ -9,6 +9,8 @@ loc = Config.http.weather_loc
 url = Config.http.api_url
 tp = Config.http.weather_type
 
+dH = DataHandler()
+
 
 def get_weather(type=tp ):
     path = url + "2.5/" + type + "?" + loc + "&appid=" + key
@@ -16,7 +18,7 @@ def get_weather(type=tp ):
     print("get_weather() ran!")
     print(path)
     contents = urllib.request.urlopen(path).read()
-    DataHandler.handleApiData(contents)
+    dH.handleApiData(contents)
 
 
 

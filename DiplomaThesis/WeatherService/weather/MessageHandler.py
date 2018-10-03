@@ -6,7 +6,7 @@ import json
 
 class DataHandler():
 
-    weatherData: Weather
+    weatherData = Weather()
 
     def handleMqttData(payload, topic, timestamp):
         print(f"{timestamp}___{topic}___{payload}")
