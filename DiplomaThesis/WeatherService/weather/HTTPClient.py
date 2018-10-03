@@ -1,7 +1,7 @@
 import urllib.request
 import datetime
-from WeatherService.weather.MQTTClient import send_message
 from WeatherService.config.ConfigHandler import Config
+from WeatherService.weather.MessageHandler import DataHandler
 
 
 key = Config.http.auth_key
@@ -16,7 +16,8 @@ def get_weather(type=tp ):
     print("get_weather() ran!")
     print(path)
     contents = urllib.request.urlopen(path).read()
-    send_message("/weather", contents)
+    DataHandler.handleApiData(contents)
+
 
 
 

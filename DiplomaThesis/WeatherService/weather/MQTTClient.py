@@ -7,14 +7,16 @@ import threading
 
 
 
+# The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
     print("on_connect ran with result code: " + str(rc))
     make_subscriptions()
 
+# The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
     print("on_message ran!")
     timestamp = datetime.datetime.now()
-    handleData(msg.payload, msg.topic, timestamp)
+    handleMqttData(msg.payload, msg.topic, timestamp)
     #print("MQTT-Recieved: " + msg.topic + " " + str(msg.payload))
     #print(timestamp)
 
@@ -31,6 +33,7 @@ def send_message(topic, payload):
 def start_client():
 
     client.loop_forever()
+    print("tt1")
 
 def test_thread():
     while True:
