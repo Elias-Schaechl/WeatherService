@@ -1,5 +1,6 @@
 import json
 from WeatherService.weather.MQTTClient import send_message
+from WeatherService.config.ConfigHandler import Config
 import time
 
 
@@ -31,27 +32,27 @@ class Weather:
 
     def SetTemp(self, temp):
         if temp == self.temp.value: return
-        self.temp = Data(temp, time.time(), "test/temp")
+        self.temp = Data(temp, time.time(), Config.topic_temp)
         send_message(self.temp.topic, self.temp.Jsonify())
 
     def SetPressure(self, pressure):
         if pressure == self.pressure.value: return
-        self.pressure = Data(pressure, time.time(), "test/pressure")
+        self.pressure = Data(pressure, time.time(), Config.topic_pressure)
         send_message(self.pressure.topic, self.pressure.Jsonify())
 
     def SetHumidity(self, humidity):
         if humidity == self.humidity.value: return
-        self.humidity = Data(humidity, time.time(), "test/humidity")
+        self.humidity = Data(humidity, time.time(), Config.topic_humidity)
         send_message(self.humidity.topic, self.humidity.Jsonify())
 
     def SetWindSpeed(self, wind_speed):
         if wind_speed == self.wind_speed.value: return
-        self.wind_speed = Data(wind_speed, time.time(), "test/wind_speed")
+        self.wind_speed = Data(wind_speed, time.time(), Config.topic_wind_speed)
         send_message(self.wind_speed.topic, self.wind_speed.Jsonify())
 
     def SetWindDeg(self, wind_deg):
         if wind_deg == self.wind_deg.value: return
-        self.wind_deg = Data(wind_deg, time.time(), "test/wind_deg")
+        self.wind_deg = Data(wind_deg, time.time(), Config.topic_wind_deg)
         send_message(self.wind_deg.topic, self.wind_deg.Jsonify())
 
 

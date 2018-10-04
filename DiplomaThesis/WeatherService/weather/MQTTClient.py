@@ -27,7 +27,7 @@ def send_message(topic, payload):
     qos = 1
     retain = False
     #print(topic + ": " + payload)
-    client.publish(topic, payload, qos, retain)
+    client.publish(Config.mqtt_weather_topic + topic, payload, qos, retain)
     return
 
 
@@ -45,9 +45,9 @@ def test_thread():
             break
         print(i)
 
-brokerURI = Config.mqtt.broker_uri
-brokerPort = Config.mqtt.broker_port
-testTopic = Config.mqtt.test_topic
+brokerURI = Config.mqtt_broker_uri
+brokerPort = Config.mqtt_broker_port
+testTopic = Config.mqtt_test_topic
 
 client = mqtt.Client()
 
