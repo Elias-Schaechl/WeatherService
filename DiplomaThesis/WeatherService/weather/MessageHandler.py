@@ -19,8 +19,10 @@ class DataHandler():
         self.weatherData.SetTemp(weather.main['temp'])
         self.weatherData.SetPressure(weather.main['pressure'])
         self.weatherData.SetHumidity(weather.main['humidity'])
-        self.weatherData.SetWindSpeed(weather.wind['speed'])
-        self.weatherData.SetWindDeg(weather.wind['deg'])
+        wind_speed = weather.wind['speed']
+        self.weatherData.SetWindSpeed(wind_speed)
+        if wind_speed > 1:
+            self.weatherData.SetWindDeg(weather.wind['deg'])
 
 
 

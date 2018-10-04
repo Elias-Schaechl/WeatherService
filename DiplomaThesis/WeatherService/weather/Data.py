@@ -55,9 +55,3 @@ class Weather:
         send_message(self.wind_deg.topic, self.wind_deg.Jsonify())
 
 
-class WeatherSchool(Weather):
-    title = "School"
-
-
-class WeatherExtern(Weather):
-    title = "External"

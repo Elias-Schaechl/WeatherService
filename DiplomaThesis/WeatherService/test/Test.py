@@ -18,8 +18,8 @@ class MyTestCase(unittest.TestCase):
         a = Data("C", "10", "1")
         b = Data("C", "20", "1")
 
-        school = WeatherSchool
-        extern = WeatherExtern
+        school = Weather()
+        extern = Weather()
         test1 = Weather
         test2 = Weather
 
