@@ -1,8 +1,10 @@
-from WeatherService.weather.HTTPClient import get_weather
 import time
-#type = "forecast"
+from WeatherService.config.ConfigHandler import Config
+from WeatherService.weather.HTTPClient import get_weather
+
+# type = "forecast"
 type = "weather"
 
 while (True):
     get_weather(type)
-    time.sleep(60)
+    time.sleep(Config.http_request_cycle_duration)

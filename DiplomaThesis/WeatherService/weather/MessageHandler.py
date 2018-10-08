@@ -1,11 +1,12 @@
-from WeatherService.weather.Data import Weather
-from WeatherService.config.ConfigHandler import Config
-from WeatherService.weather.Data import JsonObject
-from WeatherService.weather.MQTTClient import send_message
 import json
 
-class DataHandler():
+from WeatherService.weather.Data import Weather
+from WeatherService.weather.Data import JsonObject
+from WeatherService.weather.MQTTClient import send_message
+from WeatherService.config.ConfigHandler import Config
 
+
+class DataHandler():
     weatherData = Weather()
 
     def handleMqttData(payload, topic, timestamp):
@@ -23,11 +24,6 @@ class DataHandler():
         self.weatherData.SetWindSpeed(wind_speed)
         if wind_speed > 1:
             self.weatherData.SetWindDeg(weather.wind['deg'])
-
-
+        self.weatherData.SetWeatherStatus(weather.weather[0]['main'])
 
         pass
-
-
-
-

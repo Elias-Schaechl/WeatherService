@@ -1,7 +1,8 @@
 import json
+import time
+
 from WeatherService.weather.MQTTClient import send_message
 from WeatherService.config.ConfigHandler import Config
-import time
 
 
 # The basic structure how all
@@ -15,6 +16,8 @@ class Data:
 
     # Generates a Json of an Object
     def Jsonify(self):
+        if isinstance(self.value, str):
+            return "{\"value\":" + "\"" + str(self.value) + "\"" + ",\"timestamp\":" + str(int(self.timestamp)) + "}"
         return "{\"value\":" + str(self.value) + ",\"timestamp\":" + str(int(self.timestamp)) + "}"
 
 
@@ -29,8 +32,10 @@ class Weather:
     humidity = Data()
     wind_speed = Data()
     wind_deg = Data()
+    weather_status = Data()
 
     def SetTemp(self, temp):
+        temp = temp - 273.15
         if temp == self.temp.value: return
         self.temp = Data(temp, time.time(), Config.topic_temp)
         send_message(Config.mqtt_weather_topic + self.temp.topic, self.temp.Jsonify())
@@ -55,4 +60,7 @@ class Weather:
         self.wind_deg = Data(wind_deg, time.time(), Config.topic_wind_deg)
         send_message(Config.mqtt_weather_topic + self.wind_deg.topic, self.wind_deg.Jsonify())
 
-
+    def SetWeatherStatus(self, weather_status):
+        if weather_status == self.weather_status.value: return
+        self.weather_status = Data(weather_status, time.time(), Config.topic_weather_status)
+        send_message(Config.mqtt_weather_topic + self.weather_status.topic, self.weather_status.Jsonify())
