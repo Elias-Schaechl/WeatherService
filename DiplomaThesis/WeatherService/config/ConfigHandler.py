@@ -12,7 +12,8 @@ class Config:
     #mqtt connection
     mqtt_broker_port = 8080
     mqtt_broker_uri = "vm61.htl-leonding.ac.at"
-    mqtt_weather_topic = "htlleonding/weather/actual/"
+    mqtt_weather_topic = "/htlleonding/outdoor/weather/actual/"
+    mqtt_forecast_topic = ""
 
     #http connection
     http_auth_key = "5cb2b2fa61fa541e7b13255fc29d5c61"

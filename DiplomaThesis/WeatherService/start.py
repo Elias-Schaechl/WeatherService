@@ -5,4 +5,4 @@ type = "weather"
 
 while (True):
     get_weather(type)
-    time.sleep(120)
+    time.sleep(60)

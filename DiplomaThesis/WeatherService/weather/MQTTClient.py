@@ -17,17 +17,17 @@ def on_message(client, userdata, msg):
     print("on_message ran!")
     timestamp = datetime.datetime.now()
     #DataHandler.handleMqttData(msg.payload, msg.topic, timestamp)
-    #print("MQTT-Recieved: " + msg.topic + " " + str(msg.payload))
+    print("MQTT-Recieved: " + msg.topic + " " + str(msg.payload))
     #print(timestamp)
 
 def make_subscriptions():
-    client.subscribe("/test/#")
+    client.subscribe("htllending/#")
 
 def send_message(topic, payload):
     qos = 1
     retain = False
-    #print(topic + ": " + payload)
-    client.publish(Config.mqtt_weather_topic + topic, payload, qos, retain)
+    print(topic + ": " + payload)
+    client.publish(topic, payload, qos, retain)
     return
 
 
@@ -47,7 +47,7 @@ def test_thread():
 
 brokerURI = Config.mqtt_broker_uri
 brokerPort = Config.mqtt_broker_port
-testTopic = Config.mqtt_test_topic
+testTopic = Config.mqtt_weather_topic
 
 client = mqtt.Client()
 
