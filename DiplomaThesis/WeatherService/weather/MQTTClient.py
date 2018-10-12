@@ -29,7 +29,7 @@ def make_subscriptions():
 
 def send_message(topic, payload):
     qos = 1
-    retain = False
+    retain = True
     print(topic + ": " + payload)
     client.publish(topic, payload, qos, retain)
     return

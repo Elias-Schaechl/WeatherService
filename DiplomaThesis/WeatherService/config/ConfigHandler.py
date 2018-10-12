@@ -19,6 +19,7 @@ class Config:
     http_weather_loc = "q=Leonding,AT"
     http_api_url = "https://api.openweathermap.org/data/"
     http_weather_type = "weather"
+    http_forecast_type = "forecast"
     http_request_cycle_duration = 60     # In seconds
 
     # json paths

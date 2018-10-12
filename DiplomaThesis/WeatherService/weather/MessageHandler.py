@@ -27,3 +27,6 @@ class DataHandler():
         self.weatherData.SetWeatherStatus(weather.weather[0]['main'])
 
         pass
+
+    def handleApiForecast(self, contents):
+        pass
