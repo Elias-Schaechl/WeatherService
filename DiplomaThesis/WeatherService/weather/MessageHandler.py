@@ -16,20 +16,36 @@ class DataHandler():
         # Config.mqtt.
 
         weather = JsonObject(contents)
-        self.weatherData.SetTemp(weather.main['temp'])
-        self.weatherData.SetPressure(weather.main['pressure'])
-        self.weatherData.SetHumidity(weather.main['humidity'])
-        wind_speed = weather.wind['speed']
-        self.weatherData.SetWindSpeed(wind_speed)
-        if wind_speed > 1:
-            self.weatherData.SetWindDeg(weather.wind['deg'])
-        self.weatherData.SetWeatherStatus(weather.weather[0]['main'])
+
+        temp = self.weatherData.SetTemp(weather.main['temp'])
+        if temp is not None:
+            send_message(temp[0], temp[1])
+
+        pressure = self.weatherData.SetPressure(weather.main['pressure'])
+        if pressure is not None:
+            send_message(pressure[0], pressure[1])
+
+        humidity = self.weatherData.SetHumidity(weather.main['humidity'])
+        if humidity is not None:
+            send_message(humidity[0], humidity[1])
+
+        windsp = weather.wind['speed']
+        wind_speed = self.weatherData.SetWindSpeed(windsp)
+        if wind_speed is not None:
+            send_message(wind_speed[0], wind_speed[1])
+        if windsp > 1:
+            wind_deg = self.weatherData.SetWindSpeed(weather.wind['deg'])
+            if wind_deg is not None:
+                send_message(wind_deg[0], wind_deg[1])
+
+        weather_status = self.weatherData.SetWeatherStatus(weather.weather[0]['main'])
+        if weather_status is not None: send_message(weather_status[0], weather_status[1])
 
         pass
 
     def handleApiForecast(self, contents):
         forecast = JsonObject(contents)
-        print(forecast)
+        #print(forecast)
         del forecast.__dict__["city"]
         del forecast.__dict__["cod"]
         del forecast.__dict__["message"]

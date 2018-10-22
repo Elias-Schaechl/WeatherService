@@ -17,13 +17,16 @@ dH = DataHandler()
 def get_weather():
     path = url + "2.5/" + tp_weather + "?" + loc + "&appid=" + key
     print(path)
-    try:
-        contents = urllib.request.urlopen(path).read()
-        dH.handleApiData(contents)
-    except:
-        print("get_weather() ran with errors!")
-    else:
-        print("get_weather() ran!")
+    contents = urllib.request.urlopen(path).read()
+    dH.handleApiData(contents)
+    print("get_weather() ran!")
+    #try:
+    #    contents = urllib.request.urlopen(path).read()
+    #    dH.handleApiData(contents)
+    #except:
+    #    print("get_weather() ran with errors!")
+    #else:
+    #    print("get_weather() ran!")
 
 
 def get_forecast():

@@ -4,7 +4,7 @@ class Config:
     def __init__(self):
         pass
 
-    print("ttttt")
+    print("Config ran!")
     # json_data = open(config_directory).read()
     # print(json_data)
 
@@ -22,7 +22,8 @@ class Config:
     http_api_url = "https://api.openweathermap.org/data/"
     http_weather_type = "weather"
     http_forecast_type = "forecast"
-    http_request_cycle_duration = 60     # In seconds
+    http_request_cycle_duration_weather = 60     # In seconds, 1 m
+    http_request_cycle_duration_forecast = 10800     # In seconds, 5 h
 
     # json paths
 

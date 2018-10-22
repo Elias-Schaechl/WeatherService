@@ -5,8 +5,6 @@ import paho.mqtt.client as mqtt
 from config.ConfigHandler import Config
 
 
-# from WeatherService.weather.MessageHandler import
-
 
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
@@ -28,6 +26,7 @@ def make_subscriptions():
 
 
 def send_message(topic, payload):
+
     qos = 1
     retain = True
     print(topic + ": " + payload)
@@ -36,11 +35,12 @@ def send_message(topic, payload):
 
 
 def start_client():
+    print("start_client ran!")
     client.on_connect = on_connect
     client.on_message = on_message
     client.connect(brokerURI, brokerPort, 60)
     client.loop_forever()
-    print("tt1")
+
 
 
 def test_thread():
@@ -58,6 +58,8 @@ testTopic = Config.mqtt_weather_topic
 client = mqtt.Client()
 client.username_pw_set(Config.mqtt_client_username, Config.mqtt_client_password)
 
-clientThread = threading.Thread(target=start_client)
+clientThread = threading.Thread(name='MqttClientThread',target=start_client)
 
 clientThread.start()
+
+print("M1ttClient end")

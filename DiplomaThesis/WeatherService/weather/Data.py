@@ -1,7 +1,6 @@
 import json
 import time
 
-from WeatherService.weather.MQTTClient import send_message
 from WeatherService.config.ConfigHandler import Config
 
 
@@ -38,31 +37,31 @@ class Weather:
 
     def SetTemp(self, temp):
         temp = temp - 273.15
-        if temp == self.temp.value: return
+        if temp == self.temp.value: return None
         self.temp = Data(temp, time.time(), Config.topic_temp)
-        send_message(Config.mqtt_weather_topic + self.temp.topic, self.temp.Jsonify())
+        return Config.mqtt_weather_topic + self.temp.topic, self.temp.Jsonify()
 
     def SetPressure(self, pressure):
-        if pressure == self.pressure.value: return
+        if pressure == self.pressure.value: return None
         self.pressure = Data(pressure, time.time(), Config.topic_pressure)
-        send_message(Config.mqtt_weather_topic + self.pressure.topic, self.pressure.Jsonify())
+        return Config.mqtt_weather_topic + self.pressure.topic, self.pressure.Jsonify()
 
     def SetHumidity(self, humidity):
-        if humidity == self.humidity.value: return
+        if humidity == self.humidity.value: return None
         self.humidity = Data(humidity, time.time(), Config.topic_humidity)
-        send_message(Config.mqtt_weather_topic + self.humidity.topic, self.humidity.Jsonify())
+        return Config.mqtt_weather_topic + self.humidity.topic, self.humidity.Jsonify()
 
     def SetWindSpeed(self, wind_speed):
-        if wind_speed == self.wind_speed.value: return
+        if wind_speed == self.wind_speed.value: return None
         self.wind_speed = Data(wind_speed, time.time(), Config.topic_wind_speed)
-        send_message(Config.mqtt_weather_topic + self.wind_speed.topic, self.wind_speed.Jsonify())
+        return Config.mqtt_weather_topic + self.wind_speed.topic, self.wind_speed.Jsonify()
 
     def SetWindDeg(self, wind_deg):
-        if wind_deg == self.wind_deg.value: return
+        if wind_deg == self.wind_deg.value: return None
         self.wind_deg = Data(wind_deg, time.time(), Config.topic_wind_deg)
-        send_message(Config.mqtt_weather_topic + self.wind_deg.topic, self.wind_deg.Jsonify())
+        return Config.mqtt_weather_topic + self.wind_deg.topic, self.wind_deg.Jsonify()
 
     def SetWeatherStatus(self, weather_status):
-        if weather_status == self.weather_status.value: return
+        if weather_status == self.weather_status.value: return None
         self.weather_status = Data(weather_status, time.time(), Config.topic_weather_status)
-        send_message(Config.mqtt_weather_topic + self.weather_status.topic, self.weather_status.Jsonify())
+        return Config.mqtt_weather_topic + self.weather_status.topic, self.weather_status.Jsonify()
