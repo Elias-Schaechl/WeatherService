@@ -37,31 +37,37 @@ class Weather:
 
     def SetTemp(self, temp):
         temp = temp - 273.15
-        if temp == self.temp.value: return None
+        if temp == self.temp.value:
+            return None
         self.temp = Data(temp, time.time(), Config.topic_temp)
         return Config.mqtt_weather_topic + self.temp.topic, self.temp.Jsonify()
 
     def SetPressure(self, pressure):
-        if pressure == self.pressure.value: return None
+        if pressure == self.pressure.value:
+            return None
         self.pressure = Data(pressure, time.time(), Config.topic_pressure)
         return Config.mqtt_weather_topic + self.pressure.topic, self.pressure.Jsonify()
 
     def SetHumidity(self, humidity):
-        if humidity == self.humidity.value: return None
+        if humidity == self.humidity.value:
+            return None
         self.humidity = Data(humidity, time.time(), Config.topic_humidity)
         return Config.mqtt_weather_topic + self.humidity.topic, self.humidity.Jsonify()
 
     def SetWindSpeed(self, wind_speed):
-        if wind_speed == self.wind_speed.value: return None
+        if wind_speed == self.wind_speed.value:
+            return None
         self.wind_speed = Data(wind_speed, time.time(), Config.topic_wind_speed)
         return Config.mqtt_weather_topic + self.wind_speed.topic, self.wind_speed.Jsonify()
 
     def SetWindDeg(self, wind_deg):
-        if wind_deg == self.wind_deg.value: return None
+        if wind_deg == self.wind_deg.value:
+            return None
         self.wind_deg = Data(wind_deg, time.time(), Config.topic_wind_deg)
         return Config.mqtt_weather_topic + self.wind_deg.topic, self.wind_deg.Jsonify()
 
     def SetWeatherStatus(self, weather_status):
-        if weather_status == self.weather_status.value: return None
+        if weather_status == self.weather_status.value:
+            return None
         self.weather_status = Data(weather_status, time.time(), Config.topic_weather_status)
         return Config.mqtt_weather_topic + self.weather_status.topic, self.weather_status.Jsonify()

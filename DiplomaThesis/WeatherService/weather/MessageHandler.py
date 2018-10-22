@@ -34,7 +34,7 @@ class DataHandler():
         if wind_speed is not None:
             send_message(wind_speed[0], wind_speed[1])
         if windsp > 1:
-            wind_deg = self.weatherData.SetWindSpeed(weather.wind['deg'])
+            wind_deg = self.weatherData.SetWindDeg(weather.wind['deg'])
             if wind_deg is not None:
                 send_message(wind_deg[0], wind_deg[1])
 
