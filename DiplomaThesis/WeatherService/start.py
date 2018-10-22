@@ -1,6 +1,6 @@
 import time
-from WeatherService.config.ConfigHandler import Config
-from WeatherService.weather.HTTPClient import get_weather, get_forecast
+from config.ConfigHandler import Config
+from weather.HTTPClient import get_weather, get_forecast
 
 
 while (True):

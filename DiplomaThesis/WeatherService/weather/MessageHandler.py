@@ -1,9 +1,8 @@
 import json
 
-from WeatherService.weather.Data import Weather
-from WeatherService.weather.Data import JsonObject
-from WeatherService.weather.MQTTClient import send_message
-from WeatherService.config.ConfigHandler import Config
+from .Data import Weather, JsonObject
+from .MQTTClient import send_message
+from config.ConfigHandler import Config
 
 
 class DataHandler():
@@ -29,4 +28,13 @@ class DataHandler():
         pass
 
     def handleApiForecast(self, contents):
+        forecast = JsonObject(contents)
+        print(forecast)
+        del forecast.__dict__["city"]
+        del forecast.__dict__["cod"]
+        del forecast.__dict__["message"]
+        forecast.__dict__["city"] = "Leonding"
+        print(forecast)
+        send_message(Config.mqtt_forecast_topic, str(forecast))
+
         pass

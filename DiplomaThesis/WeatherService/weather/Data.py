@@ -24,6 +24,8 @@ class Data:
 class JsonObject(object):
     def __init__(self, data):
         self.__dict__ = json.loads(data)
+    def __str__(self):
+        return json.dumps(self.__dict__)
 
 
 class Weather:

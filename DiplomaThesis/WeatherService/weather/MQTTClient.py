@@ -2,7 +2,7 @@ import datetime
 import threading
 import paho.mqtt.client as mqtt
 
-from WeatherService.config.ConfigHandler import Config
+from config.ConfigHandler import Config
 
 
 # from WeatherService.weather.MessageHandler import
@@ -56,6 +56,7 @@ brokerPort = Config.mqtt_broker_port
 testTopic = Config.mqtt_weather_topic
 
 client = mqtt.Client()
+client.username_pw_set(Config.mqtt_client_username, Config.mqtt_client_password)
 
 clientThread = threading.Thread(target=start_client)
 

@@ -1,7 +1,7 @@
 import unittest
 
-from WeatherService.weather.MQTTClient import send_message
-from WeatherService.weather.Data import *
+from ..weather.MQTTClient import send_message
+from ..weather.Data import *
 
 
 class MyTestCase(unittest.TestCase):
