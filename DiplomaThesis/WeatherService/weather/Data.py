@@ -1,7 +1,7 @@
 import json
 import time
 
-from WeatherService.config.ConfigHandler import Config
+from config.ConfigHandler import Config
 
 
 # The basic structure how all

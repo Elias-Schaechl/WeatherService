@@ -1,0 +1,9 @@
+version: '3'
+services:
+  weather_service:
+    image: 'weather_service'
+    container_name: 'weather_service'
+    build: ./DiplomaThesis/WeatherService
+    
+    #volumes: 
+    #  - ./CC-Service/Service:/usr/src/app

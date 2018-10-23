@@ -38,7 +38,7 @@ class DataHandler():
             if wind_deg is not None:
                 send_message(wind_deg[0], wind_deg[1])
 
-        weather_status = self.weatherData.SetWeatherStatus(weather.weather[0]['main'])
+        weather_status = self.weatherData.SetWeatherStatus(weather.weather[0]['id'])
         if weather_status is not None: send_message(weather_status[0], weather_status[1])
 
         pass
