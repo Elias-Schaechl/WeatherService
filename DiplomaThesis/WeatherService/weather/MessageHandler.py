@@ -50,6 +50,14 @@ class DataHandler():
         del forecast.__dict__["cod"]
         del forecast.__dict__["message"]
         forecast.__dict__["city"] = "Leonding"
+        for i  in range(0,forecast.__dict__["cnt"]):
+            #print(forecast.__dict__["list"][i])
+            for k, v in forecast.__dict__["list"][i]["main"].items():
+                #print(k + str(v))
+                if k == "temp" or k == "temp_min" or k == "temp_max":
+                    forecast.__dict__["list"][i]["main"][k] = round(forecast.__dict__["list"][i]["main"][k] - 273.1, 2)
+
+
         print(forecast)
         send_message(Config.mqtt_forecast_topic, str(forecast))
 

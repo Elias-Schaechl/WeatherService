@@ -34,3 +34,11 @@ class Config:
     topic_humidity = "/humidity"
     topic_pressure = "/pressure"
     topic_weather_status = "/status"
+
+    # data units
+    unit_temp = "°C"
+    unit_wind_deg = "°"
+    unit_wind_speed = "m/s"
+    unit_humidity = "%"
+    unit_pressure = "hPa"
+    unit_weather_status = "id"
