@@ -9,7 +9,7 @@ class Config:
     # print(json_data)
 
     # mqtt connection
-    mqtt_broker_port = 8080
+    mqtt_broker_port = 1883
     mqtt_broker_uri = "vm61.htl-leonding.ac.at"
     mqtt_weather_topic = "htlleonding/outdoor/weather/actual"
     mqtt_forecast_topic = "htlleonding/outdoor/weather/forecast"
